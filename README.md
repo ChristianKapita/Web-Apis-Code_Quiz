@@ -6,7 +6,7 @@ User click on start button to start the quiz
 if user select a wrong answer - 15 sec is subtracted from the remaining time
 if all the questions have been answered or the time reaches 0 - the Quiz is over and the user can save the score
 
-## Technologies user :
+## Technologies used :
 ### Htmnl
 ### CSS
 ### JavaScript - DOM APIs
