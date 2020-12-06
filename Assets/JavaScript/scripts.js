@@ -92,7 +92,6 @@ function showQuestion() {
      
     } 
     else {
-      feedbackEl.classList.add("correct");
       feedbackEl.textContent = "Correct!";
       feedbackEl.style.color="lightgreen";
   }
