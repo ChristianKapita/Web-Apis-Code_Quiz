@@ -99,7 +99,7 @@ function showQuestion() {
   feedbackEl.setAttribute("class", "feedback");
   setTimeout(function() {
     feedbackEl.setAttribute("class", "feedback hide");
-  }, 1000);
+  }, 4000);
 
   // Next question
   currentQuestionIndex++;
