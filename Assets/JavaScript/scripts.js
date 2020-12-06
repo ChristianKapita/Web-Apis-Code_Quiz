@@ -61,6 +61,7 @@ function generateQuiz(){
   showQuestion();
   
 }
+
 //Function to get question from the array questuions
 function showQuestion() {
     var currentQuestion = questions[currentQuestionIndex];
@@ -87,13 +88,13 @@ function showQuestion() {
       }
       timerEl.textContent = time;
       feedbackEl.textContent = "Wrong!";
-      feedbackEl.classList.add("wrong")
+      feedbackEl.style.color="Red";
+     
     } 
     else {
-
-      sfxRight.play();
+      feedbackEl.classList.add("correct");
       feedbackEl.textContent = "Correct!";
-      feedbackEl.classList.add("correct")
+      feedbackEl.style.color="lightgreen";
   }
   // Display feedback for half a second
   feedbackEl.setAttribute("class", "feedback");
@@ -119,3 +120,45 @@ function quizEnd() {
     finalScoreEl.textContent = time;
     questionsEl.setAttribute("class", "hide");
 }
+
+//set up timing 
+function clockTick() {
+    time--;
+    timerEl.textContent = time;
+    if (time <= 0) {
+      quizEnd();
+    }
+  }
+
+//Function to save scores
+function saveHighscore() {
+  var initials = initialsEl.value.trim();
+  if (initials !== "") {
+    var highscores =
+      JSON.parse(window.localStorage.getItem("highscores")) || [];
+    var newScore = {
+      score: time,
+      initials: initials
+    };
+    highscores.push(newScore);
+    window.localStorage.setItem("highscores", JSON.stringify(highscores));
+    window.location.href = "scores.html";
+  }
+}
+
+//function to check if user pressed Enter 
+function checkForEnter(event) {
+    // "13" represents the enter key
+    if (event.key === "Enter") {
+      saveHighscore();
+    }
+  }
+//call function highScore() yo save score when user click on submit button
+submitBtn.onclick = saveHighscore;
+
+//call function generateQuiz() to start the quiz when user click on start 
+startBtn.onclick = generateQuiz;
+
+//call function  checkForEnter() to check key pressed submitting max
+initialsEl.onkeyup=checkForEnter;
+

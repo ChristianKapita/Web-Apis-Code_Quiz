@@ -86,4 +86,10 @@ body {
     top: 10px;
     right: 10px;
   }
+  .correct {
+      color: green;
+  }
+  .wrong {
+      color: red;
+  }
   
